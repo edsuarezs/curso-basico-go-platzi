@@ -3,31 +3,62 @@ package main
 import "fmt"
 
 func main() {
-	// declaración de constantes
-	const pi float64 = 3.141592653589793
-	const pi2 = 3.141592653589793
-	fmt.Println("pi: ", pi)
-	fmt.Println("pi2: ", pi2)
-
-	// declaración de variabes enteras
-	base := 12
-	var altura int = 14
-	var area int
-	area = base * altura
-
-	fmt.Println(base, altura, area)
-
-	// Zero values
-	var a int
-	var b float64
-	var c string
-	var d bool
-
-	fmt.Println(a, b, c, d)
 
 	// Calculo area de un cuadrado
 	const baseCuadrado = 10
 	areaCuadrado := baseCuadrado * baseCuadrado
 
 	fmt.Println("área cuadrado: ", areaCuadrado)
+
+	x := 10
+	y := 50
+
+	// Suma
+	result := x + y
+	fmt.Println("Suma: ", result)
+
+	// Resta
+	result = x - y
+	fmt.Println("Resta: ", result)
+
+	// Multiplicación
+	result = x * y
+	fmt.Println("Multiplicación: ", result)
+
+	// Division
+	result = x / y
+	fmt.Println("Division: ", result)
+
+	// Modulo
+	result = x % y
+	fmt.Println("Modulo: ", result)
+
+	// Incremental
+	x++
+	fmt.Println("Incremental: ", x)
+
+	// Decremental
+	x--
+	fmt.Println("Decremental", x)
+
+	// Reto: Cálcular el area del rectángulo, trapecio y de un circulo
+
+	const pi float64 = 3.14159
+	var radio float64
+	var circunferencia float64 = 19
+	base := x
+	altura := y
+	// área rectángulo
+	result = base * altura
+	fmt.Println("El área del rectángulo es: ", result)
+	// área del trapecio
+	base2 := base + x
+	result = ((base2 + base) * altura) / 2
+	fmt.Println("El área del trapecio es: ", result)
+	// área del circulo
+	radio = circunferencia / 2
+	result2 := float64(result)
+	result2 = pi * (radio * radio)
+	fmt.Println("El área del circulo es: ", result2)
+
 }
