@@ -3,22 +3,23 @@ package main
 import "fmt"
 
 func main() {
+	// Defer, es el keyword para ejecutar la última función antes de que todo muera.
+	defer fmt.Println("Hola")
+	fmt.Println("Mundo")
+	// Continue y break
+	for i := 0; i < 10; i++ {
+		fmt.Println(i)
 
-	switch modulo := 5 % 2; modulo {
-	case 0:
-		fmt.Println("Es par")
-	default:
-		fmt.Println("Es impar")
-	}
+		// continue
+		if i == 2 {
+			fmt.Println("Es 2")
+			continue
+		}
 
-	// sin condicion
-	value := 50
-	switch {
-	case value > 100:
-		fmt.Println("Es mayor a 100")
-	case value < 0:
-		fmt.Println("Es menor a 0")
-	default:
-		fmt.Println("No condicion")
+		// break
+		if i == 8 {
+			fmt.Println("Break")
+			break
+		}
 	}
 }
