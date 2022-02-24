@@ -1,39 +1,28 @@
 package main
 
-import "fmt"
+import (
+	"net/http"
 
-func message(text string, c chan string) {
-	c <- text
-}
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
+)
 
 func main() {
-	c := make(chan string, 2)
+	// Echo instance
+	e := echo.New()
 
-	c <- "Mensaje1"
-	c <- "Mensaje2"
+	// Middleware
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
 
-	fmt.Println(len(c), cap(c))
+	// Routes
+	e.GET("/", hello)
 
-	// Range y close
-	close(c)
+	// Start server
+	e.Logger.Fatal(e.Start(":1323"))
+}
 
-	//c <- "Mensaje3"
-	for message := range c {
-		fmt.Println(message)
-	}
-
-	// Select
-	email1 := make(chan string)
-	email2 := make(chan string)
-	go message("message1", email1)
-	go message("message2", email2)
-
-	for i := 0; i < 2; i++ {
-		select {
-		case m1 := <-email1:
-			fmt.Println("Email recibido de email1", m1)
-		case m2 := <-email2:
-			fmt.Println("Email recibido de email2", m2)
-		}
-	}
+// Handler
+func hello(c echo.Context) error {
+	return c.String(http.StatusOK, "Hello, World!")
 }
